@@ -1,0 +1,19 @@
+#calc-container {
+    display: grid;
+    border-style: solid;
+    width: 400px;
+    height: 600px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-areas: 
+        "display display display display"
+        "clear-btn clear-btn clear-btn divide-btn"
+        "7-btn 8-btn 9-btn multiply-btn"
+        "4-btn 5-btn 6-btn subtract-btn"
+        "1-btn 2-btn 3-btn add-btn"
+        "decimal-btn 0-btn equals-btn equals-btn";
+}
+
+#calc-display {
+    grid-area: display;
+}

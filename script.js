@@ -1,24 +1,16 @@
 function add(a, b) {
-    console.log(a);
-    console.log(b);
     return a + b;
 }
 
 function subtract(a, b) {
-    console.log(a);
-    console.log(b);
     return a - b;
 }
 
 function multiply(a, b) {
-    console.log(a);
-    console.log(b);
     return a * b;
 }
 
 function divide(a, b) {
-    console.log(a);
-    console.log(b);
     return a / b;
 }
 
@@ -35,4 +27,4 @@ function operate(a, b, operator) {
     }
 }
 
-console.log(operate(5, 6, 'multiply'));
+// console.log(operate(5, 6, 'multiply'));
