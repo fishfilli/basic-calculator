@@ -8,12 +8,80 @@
     grid-template-areas: 
         "display display display display"
         "clear-btn clear-btn clear-btn divide-btn"
-        "7-btn 8-btn 9-btn multiply-btn"
-        "4-btn 5-btn 6-btn subtract-btn"
-        "1-btn 2-btn 3-btn add-btn"
-        "decimal-btn 0-btn equals-btn equals-btn";
+        "btn-7 btn-8 btn-9 multiply-btn"
+        "btn-4 btn-5 btn-6 subtract-btn"
+        "btn-1 btn-2 btn-3 add-btn"
+        "decimal-btn btn-0 equals-btn equals-btn";
 }
 
 #calc-display {
     grid-area: display;
+}
+
+#clear-button {
+    grid-area: clear-btn;
+}
+
+#divide-button {
+    grid-area: divide-btn;
+}
+
+#multiply-button {
+    grid-area: multiply-btn;
+}
+
+#subtract-button {
+    grid-area: subtract-btn;
+}
+
+#add-button {
+    grid-area: add-btn;
+}
+
+#decimal-button {
+    grid-area: decimal-btn;
+}
+
+#equals-button {
+    grid-area: equals-btn;
+}
+
+#button-0 {
+    grid-area: btn-0;
+}
+
+#button-1 {
+    grid-area: btn-1;
+}
+
+#button-2 {
+    grid-area: btn-2;
+}
+
+#button-3 {
+    grid-area: btn-3;
+}
+
+#button-4 {
+    grid-area: btn-4;
+}
+
+#button-5 {
+    grid-area: btn-5;
+}
+
+#button-6 {
+    grid-area: btn-6;
+}
+
+#button-7 {
+    grid-area: btn-7;
+}
+
+#button-8 {
+    grid-area: btn-8;
+}
+
+#button-9 {
+    grid-area: btn-9;
 }
