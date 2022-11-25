@@ -27,4 +27,49 @@ function operate(a, b, operator) {
     }
 }
 
-// console.log(operate(5, 6, 'multiply'));
+function appendNum(input) {
+    if (!(input.target === clearBtn || input.target === equalsBtn)) {
+        currentNum += input.target.textContent;
+        calcDisplay.textContent = currentNum;
+    }
+}
+
+function clear() {
+    currentNum = '';
+    calcDisplay.textContent = '0';
+    firstOperand = 0;
+    secondOperand = 0;
+    currentOperator = '';
+}
+
+function setOperator(operator) {
+    firstOperand = currentNum;
+    currentOperator = operator.target.textContent;
+    console.log(currentOperator);
+}
+
+let calcDisplay = document.querySelector('#calc-display');
+const numBtns = document.querySelectorAll('.num-button');
+const clearBtn = document.querySelector('#clear-button');
+const divideBtn = document.querySelector('#divide-button');
+const multiplyBtn = document.querySelector('#multiply-button');
+const subtractBtn = document.querySelector('#subtract-button');
+const addBtn = document.querySelector('#add-button');
+const decimalBtn = document.querySelector('#decimal-button');
+const equalsBtn = document.querySelector('#equals-button');
+const operatorBtns = document.querySelectorAll('.operation-button');
+
+numBtns.forEach((btn) => {
+    btn.addEventListener('click', appendNum);
+});
+
+clearBtn.addEventListener('click', clear);
+
+operatorBtns.forEach((btn) => {
+    btn.addEventListener('click', setOperator);
+});
+
+let currentNum = '';
+let firstOperand = 0;
+let secondOperand = 0;
+let currentOperator = '';
