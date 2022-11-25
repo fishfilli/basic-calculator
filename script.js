@@ -1,3 +1,14 @@
+let calcDisplay = document.querySelector('#calc-display');
+const numBtns = document.querySelectorAll('.num-button');
+const clearBtn = document.querySelector('#clear-button');
+const divideBtn = document.querySelector('#divide-button');
+const multiplyBtn = document.querySelector('#multiply-button');
+const subtractBtn = document.querySelector('#subtract-button');
+const addBtn = document.querySelector('#add-button');
+const decimalBtn = document.querySelector('#decimal-button');
+const equalsBtn = document.querySelector('#equals-button');
+const operatorBtns = document.querySelectorAll('.operation-button');
+
 function add(a, b) {
     return a + b;
 }
@@ -16,13 +27,17 @@ function divide(a, b) {
 
 function operate(a, b, operator) {
     switch(operator) {
-        case 'add':
+        case '+':
+            console.log('adding');
             return add(a, b);
-        case 'subtract':
+        case '-':
+            console.log('subtracting');
             return subtract(a, b);
-        case 'multiply':
+        case '×':
+            console.log('multiplying');
             return multiply(a, b);
-        case 'divide':
+        case '÷':
+            console.log('dividing');
             return divide(a, b);      
     }
 }
@@ -45,19 +60,18 @@ function clear() {
 function setOperator(operator) {
     firstOperand = currentNum;
     currentOperator = operator.target.textContent;
-    console.log(currentOperator);
+    console.log(`firstOperand: ${firstOperand}`);
+    console.log(`currentOperator: ${currentOperator}`);
+    currentNum = '';
 }
 
-let calcDisplay = document.querySelector('#calc-display');
-const numBtns = document.querySelectorAll('.num-button');
-const clearBtn = document.querySelector('#clear-button');
-const divideBtn = document.querySelector('#divide-button');
-const multiplyBtn = document.querySelector('#multiply-button');
-const subtractBtn = document.querySelector('#subtract-button');
-const addBtn = document.querySelector('#add-button');
-const decimalBtn = document.querySelector('#decimal-button');
-const equalsBtn = document.querySelector('#equals-button');
-const operatorBtns = document.querySelectorAll('.operation-button');
+function evaluate() {   
+    secondOperand = currentNum;
+    console.log(`secondOperand: ${secondOperand}`);
+    currentAnswer = operate(firstOperand, secondOperand, currentOperator);
+    console.log(currentAnswer);
+    calcDisplay.textContent = currentAnswer;
+}
 
 numBtns.forEach((btn) => {
     btn.addEventListener('click', appendNum);
@@ -69,7 +83,10 @@ operatorBtns.forEach((btn) => {
     btn.addEventListener('click', setOperator);
 });
 
+equalsBtn.addEventListener('click', evaluate);
+
 let currentNum = '';
 let firstOperand = 0;
 let secondOperand = 0;
 let currentOperator = '';
+let currentAnswer = 0;

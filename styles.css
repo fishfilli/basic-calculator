@@ -80,6 +80,9 @@ button {
 #equals-button {
     grid-area: equals-btn;
     border-radius: 20px;
+    background-color: orange;
+    color: white;
+    font-weight: bold;
 }
 
 #button-0 {
