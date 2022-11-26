@@ -39,6 +39,12 @@ button {
     font-weight: bold;
 }
 
+.operation-button:hover,
+#equals-button:hover {
+    background-color: white;
+    color: orange;
+}
+
 #calc-display {
     grid-area: display;
     color: white;
@@ -131,4 +137,14 @@ button {
     background-color: lightgray;
     color: black;
     font-weight: bold;
+}
+
+#clear-button:hover,
+#delete-button:hover {
+    background-color: white;
+}
+
+.num-button:hover, 
+#decimal-button:hover {
+    background-color: gray;
 }
