@@ -17,7 +17,7 @@ body {
     grid-template-rows: repeat(6, 1fr);
     grid-template-areas: 
         "display display display display"
-        "clear-btn clear-btn clear-btn divide-btn"
+        "clear-btn clear-btn delete-btn divide-btn"
         "btn-7 btn-8 btn-9 multiply-btn"
         "btn-4 btn-5 btn-6 subtract-btn"
         "btn-1 btn-2 btn-3 add-btn"
@@ -123,4 +123,12 @@ button {
 
 #button-9 {
     grid-area: btn-9;
+}
+
+#delete-button {
+    grid-area: delete-btn;
+    border-radius: 20px;
+    background-color: lightgray;
+    color: black;
+    font-weight: bold;
 }

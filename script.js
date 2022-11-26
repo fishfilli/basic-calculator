@@ -8,6 +8,7 @@ const addBtn = document.querySelector('#add-button');
 const decimalBtn = document.querySelector('#decimal-button');
 const equalsBtn = document.querySelector('#equals-button');
 const operationBtns = document.querySelectorAll('.operation-button');
+const deleteBtn = document.querySelector('#delete-button');
 
 function add(a, b) {
     return (Number(a) + Number(b));
@@ -77,6 +78,10 @@ function setOperation(operator) {
     currentOperation = operator.target.textContent;
 }
 
+function deleteLast() {
+    currentOperand = currentOperand.slice(0, -1);
+};
+
 numBtns.forEach(btn => {
     btn.addEventListener('click', appendNum);
     btn.addEventListener('click', displayNum);
@@ -92,6 +97,11 @@ clearBtn.addEventListener('click', clearAll);
 
 decimalBtn.addEventListener('click', (e) => {
     appendNum(e);
+    displayNum();
+});
+
+deleteBtn.addEventListener('click', () => {
+    deleteLast();
     displayNum();
 });
 
