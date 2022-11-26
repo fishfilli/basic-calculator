@@ -52,12 +52,14 @@ function clearAll() {
 function evaluate() {
     if (previousOperand === '' || currentOperand === '') return;
     let result = operate(previousOperand, currentOperand, currentOperation);
+    result = parseFloat(result.toFixed(4));
     calcDisplay.textContent = result;
     console.log(`Result: ${result}`);
     return result;
 }
 
 function appendNum(num) {
+    if (num.target.textContent === '.' && currentOperand.includes('.')) return;
     currentOperand += num.target.textContent;
 }
 
@@ -87,6 +89,11 @@ operationBtns.forEach(btn => {
 equalsBtn.addEventListener('click', evaluate);
 
 clearBtn.addEventListener('click', clearAll);
+
+decimalBtn.addEventListener('click', (e) => {
+    appendNum(e);
+    displayNum();
+});
 
 let currentOperand = '';
 let previousOperand = '';
