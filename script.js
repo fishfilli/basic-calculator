@@ -7,10 +7,10 @@ const subtractBtn = document.querySelector('#subtract-button');
 const addBtn = document.querySelector('#add-button');
 const decimalBtn = document.querySelector('#decimal-button');
 const equalsBtn = document.querySelector('#equals-button');
-const operatorBtns = document.querySelectorAll('.operation-button');
+const operationBtns = document.querySelectorAll('.operation-button');
 
 function add(a, b) {
-    return a + b;
+    return (Number(a) + Number(b));
 }
 
 function subtract(a, b) {
@@ -42,51 +42,52 @@ function operate(a, b, operator) {
     }
 }
 
-function appendNum(input) {
-    if (!(input.target === clearBtn || input.target === equalsBtn)) {
-        currentNum += input.target.textContent;
-        calcDisplay.textContent = currentNum;
+function clearAll() {
+    currentOperand = '';
+    previousOperand = '';
+    currentOperation = '';
+    calcDisplay.textContent = 0;
+}
+
+function evaluate() {
+    if (previousOperand === '' || currentOperand === '') return;
+    let result = operate(previousOperand, currentOperand, currentOperation);
+    calcDisplay.textContent = result;
+    console.log(`Result: ${result}`);
+    return result;
+}
+
+function appendNum(num) {
+    currentOperand += num.target.textContent;
+}
+
+function displayNum() {
+    calcDisplay.textContent = currentOperand;
+}
+
+function setOperation(operator) {
+    if (currentOperand === '') return;
+    if (previousOperand !== '') {
+        currentOperand = evaluate();
     }
+    previousOperand = currentOperand;
+    currentOperand = '';
+    currentOperation = operator.target.textContent;
 }
 
-function clear() {
-    currentNum = '';
-    calcDisplay.textContent = '0';
-    firstOperand = 0;
-    secondOperand = 0;
-    currentOperator = '';
-}
-
-function setOperator(operator) {
-    firstOperand = currentNum;
-    currentOperator = operator.target.textContent;
-    console.log(`firstOperand: ${firstOperand}`);
-    console.log(`currentOperator: ${currentOperator}`);
-    currentNum = '';
-}
-
-function evaluate() {   
-    secondOperand = currentNum;
-    console.log(`secondOperand: ${secondOperand}`);
-    currentAnswer = operate(firstOperand, secondOperand, currentOperator);
-    console.log(currentAnswer);
-    calcDisplay.textContent = currentAnswer;
-}
-
-numBtns.forEach((btn) => {
+numBtns.forEach(btn => {
     btn.addEventListener('click', appendNum);
+    btn.addEventListener('click', displayNum);
 });
 
-clearBtn.addEventListener('click', clear);
-
-operatorBtns.forEach((btn) => {
-    btn.addEventListener('click', setOperator);
-});
+operationBtns.forEach(btn => {
+    btn.addEventListener('click', setOperation);
+})
 
 equalsBtn.addEventListener('click', evaluate);
 
-let currentNum = '';
-let firstOperand = 0;
-let secondOperand = 0;
-let currentOperator = '';
-let currentAnswer = 0;
+clearBtn.addEventListener('click', clearAll);
+
+let currentOperand = '';
+let previousOperand = '';
+let currentOperation = '';
