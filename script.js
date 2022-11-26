@@ -1,10 +1,6 @@
 let calcDisplay = document.querySelector('#calc-display');
 const numBtns = document.querySelectorAll('.num-button');
 const clearBtn = document.querySelector('#clear-button');
-const divideBtn = document.querySelector('#divide-button');
-const multiplyBtn = document.querySelector('#multiply-button');
-const subtractBtn = document.querySelector('#subtract-button');
-const addBtn = document.querySelector('#add-button');
 const decimalBtn = document.querySelector('#decimal-button');
 const equalsBtn = document.querySelector('#equals-button');
 const operationBtns = document.querySelectorAll('.operation-button');
@@ -29,16 +25,12 @@ function divide(a, b) {
 function operate(a, b, operator) {
     switch(operator) {
         case '+':
-            console.log('adding');
             return add(a, b);
         case '-':
-            console.log('subtracting');
             return subtract(a, b);
         case '×':
-            console.log('multiplying');
             return multiply(a, b);
         case '÷':
-            console.log('dividing');
             return divide(a, b);      
     }
 }
@@ -55,7 +47,6 @@ function evaluate() {
     let result = operate(previousOperand, currentOperand, currentOperation);
     result = parseFloat(result.toFixed(4));
     calcDisplay.textContent = result;
-    console.log(`Result: ${result}`);
     return result;
 }
 
